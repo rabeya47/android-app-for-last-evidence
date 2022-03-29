@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context, "Userdata.db", null, 1);
@@ -36,8 +34,71 @@ public class DBHelper extends SQLiteOpenHelper {
          }else {
              return true;
          }
+    }
 
+
+    public Boolean updateuserdate(String name, String contact, String dob){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("contact",contact);
+        contentValues.put("dob", dob);
+        Cursor curser = DB.rawQuery("Select * from Userdetails where name =?", new String[] {name});
+        if(curser.getCount()>0) {
+
+
+            long result = DB.update("userdetails", contentValues, "name=?", new String[]{name});
+
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        }else{
+            return false;
+        }
 
     }
+
+
+
+
+
+    public Boolean deletedata(String name){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        Cursor curser = DB.rawQuery("Select * from Userdetails where name =?", new String[] {name});
+        if(curser.getCount()>0) {
+
+
+            long result = DB.delete("userdetails",  "name=?", new String[]{name});
+
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        }else{
+            return false;
+        }
+
+    }
+
+
+
+
+
+
+    public Cursor getdata(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        Cursor cursor = DB.rawQuery("Select * from Userdetails ", null);
+        return cursor;
+
+    }
+
+
+
+
 
 }
