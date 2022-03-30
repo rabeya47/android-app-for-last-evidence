@@ -46,10 +46,10 @@
         android:id="@+id/btnInsert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dob"
         android:layout_marginTop="30dp"
-        android:text="Insert New Data"
-        android:textSize="24dp" />
+        android:text="Insert"
+        android:textSize="24dp"
+        android:layout_below="@id/dob"/>
 
 
     <Button
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="Update  Data"
+        android:text="Update"
         android:layout_below="@id/btnInsert"/>
 
     <Button
@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="Delete Existing Data"
+        android:text="Delete"
         android:layout_below="@id/btnUpdate"/>
 
     <Button
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="View Data"
+        android:text="View"
         android:layout_below="@id/btnDelete"/>
 
 
